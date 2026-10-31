@@ -1,14 +1,28 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class BiodiversityTracker {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         HashMap<String, Integer> registry = new HashMap<>();
         registry.put("Gray Wolf", 12);
         registry.put("Bald Eagle", 8);
         registry.put("Red Fox", 25);
         registry.put("Monarch Butterfly", 140);
         registry.put("River Otter", 5);
+
+        Scanner fileScanner = new Scanner(new File("sightings.txt"));
+        while (fileScanner.hasNextLine()) {
+            String name = fileScanner.nextLine();
+            if (registry.containsKey(name)) {
+                registry.put(name, registry.get(name) + 1);
+            } else {
+                registry.put(name, 1);
+            }
+        }
+        fileScanner.close();
+        System.out.println(registry);
 
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a species name: ");

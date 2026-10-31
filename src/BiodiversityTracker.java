@@ -24,6 +24,25 @@ public class BiodiversityTracker {
         fileScanner.close();
         System.out.println(registry);
 
+        String mostFrequentSpecies = "";
+        int maxCount = Integer.MIN_VALUE;
+        String leastFrequentSpecies = "";
+        int minCount = Integer.MAX_VALUE;
+
+        for (String name : registry.keySet()) {
+            int count = registry.get(name);
+            if (count > maxCount) {
+                maxCount = count;
+                mostFrequentSpecies = name;
+            }
+            if (count < minCount) {
+                minCount = count;
+                leastFrequentSpecies = name;
+            }
+        }
+        System.out.println("Most frequent: " + mostFrequentSpecies + " (" + maxCount + ")");
+        System.out.println("Least frequent: " + leastFrequentSpecies + " (" + minCount + ")");
+
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a species name: ");
         String species = input.nextLine();

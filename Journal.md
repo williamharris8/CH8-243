@@ -3,3 +3,5 @@ PHASE 1 - Made a registry that uses HashMap to store species and populations. A 
 PHASE 2 - Used containsKey for checking if the species was already logged. If so used put to save the count plus one, but first time added it with count of one. Figured out you have to add sightings.txt to projects main folder not src.
 
 PHASE 3 - I looped throught the registry with keySet to find which species had highest count and lowest then printed both. Finding max and min gets slower as more species would be added.
+
+PHASE 4 - The program crashed with FileNotFoundException because sightings.txt file did not exist in the project main folder.
